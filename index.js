@@ -21,7 +21,7 @@
             callback(null, originIsWhitelisted);
         }
     };
-    server.options('/api', cors(corsOptions), routes.router);
+    server.use('/api', cors(corsOptions), routes.router);
     
     server.listen(port, function(){
         console.log(`Creating worlds on port ${port}`)
