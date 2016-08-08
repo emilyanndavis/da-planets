@@ -5,10 +5,14 @@
         Schemator = require('js-data-schema'),
         schemator = new Schemator(),
         DSNedbAdapter = require('js-data-nedb'),
+        FirebaseAdapter = require('js-data-firebase'),
+        fbAdapter = new FirebaseAdapter({
+            basePath: process.env.DBCONNECTION || 'https://da-planets.firebaseio.com/',
+        }),
         adapter = new DSNedbAdapter(),
         DS = new JSData.DS();
 
-    DS.registerAdapter('nedb', adapter, {default: true});
+    DS.registerAdapter('firebase', fbAdapter, {default: true});
 
     // schemator.defineDataType('enum', function(arr){
 
